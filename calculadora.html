@@ -1,0 +1,64 @@
+<!-- Atribuindo o cabecario a pagina -->
+<!-- O cabecario é responsazel por arrumar as informações de linguagem 
+titulo da página
+e estilização
+(o cabeçario guarda as informacões para o programador)
+(o que está no cabeçario não aparece para o usuário) -->
+<head>
+    <title>Calculadora</title>
+</head>
+
+<!-- o H e o tamanho da fonte para o seu titulo -->
+<h1>calculadora</h1>
+<!-- paragrafo do texto -->
+<p>informe o número 1:</p>
+<!-- input é a parte que fica em tela que o usuario pode digitar(o leia do portugol) -->
+<input id="num1" type="number">
+<p>Informe o número 2:</p>
+<input id="num2" type="number">
+
+<!-- Br pula linha -->
+<br><br>
+
+<!-- Criar botão na tela  -->
+<button type = "button" onclick = "calcular('Somar')">Somar</button>
+<br><br>
+<button type = "button" onclick = "calcular('subtrair')">Diminuir</button>
+<br><br>
+<button type = "button" onclick = "calcular('Multiplicar')">Multiplicar</button>
+<br><br>
+<button type = "button" onclick = "calcular('Dividir')">Dividir</button>
+
+<h4>Resultado:</h4>
+<!-- Divisao que fazemos na tela que o usuario nao ve, apenas o programador -->
+<div id = "resultado"></div>
+
+<script>
+    function calcular(operacao){
+        //pegar o valor que o usuario digitou no input numero 1
+        var numero1 = parseFloat(document.getElementById('num1').value);
+        var numero2 = parseFloat(document.getElementById('num2').value);
+
+        switch(operacao){
+            case 'Somar':
+                resultado = numero1 + numero2
+                break
+            case 'subtrair':
+                resultado = numero1 - numero2
+                break
+            case 'Multiplicar':
+                resultado = numero1 * numero2
+                break
+            case 'Dividir':
+                //se e senao
+                if(numero2 = 0){
+                    resultado = 'Não e possivel dividir por zero!'
+                }else{
+                    resultado = numero1 / numero2
+                }
+                break
+    }
+    //mostrar resultado na tela 
+    document.getElementById('resultado').innerHTML = resultado;
+}
+</script>  
