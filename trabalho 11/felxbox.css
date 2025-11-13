@@ -1,0 +1,38 @@
+/* Estilo geral */
+body {
+    margin: 0;
+    height: 100vh; /* ocupa 100% da altura da tela */
+    display: flex; /* ativa o flex no body */
+    justify-content: center; /* centraliza horizontalmente */
+    align-items: center; /* centraliza verticalmente */
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Contêiner flex */
+  .container {
+    display: flex;
+    justify-content: center; /* centraliza os itens dentro do container */
+    align-items: center;
+    gap: 20px; /* espaçamento entre os cards */
+    flex-wrap: wrap; /* quebra de linha se necessário */
+  }
+  
+  /* Botões (cards) */
+  .card {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px 40px;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+  }
+  
+  /* Efeito ao passar o mouse */
+  .card:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+  }
+  
