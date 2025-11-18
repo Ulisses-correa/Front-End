@@ -1,64 +1,125 @@
-<!-- Atribuindo o cabecario a pagina -->
-<!-- O cabecario é responsazel por arrumar as informações de linguagem 
-titulo da página
-e estilização
-(o cabeçario guarda as informacões para o programador)
-(o que está no cabeçario não aparece para o usuário) -->
+<!-- atribuindo um cabeçalho a pagina -->
+ <!-- o cabeçalho é responsabel por armezanar as informçaçoes de linguagem
+  titulo da pagina
+  E estilizaoção
+  (o cabeçalho guarda as informações para o programador)
+  (o que esta no cabeçlho não aparece para o usuario) -->
 <head>
+    <!-- titulo que aparece na aba da pagina -->
     <title>Calculadora</title>
+    <!-- sinaliza que sera aceitos os caraceteres do Brasil -->
+    <meta charset="UTF-8">
 </head>
 
-<!-- o H e o tamanho da fonte para o seu titulo -->
-<h1>calculadora</h1>
-<!-- paragrafo do texto -->
-<p>informe o número 1:</p>
-<!-- input é a parte que fica em tela que o usuario pode digitar(o leia do portugol) -->
+<!-- o H é o tamanho da fonte para o titulo -->
+<h2>Calculadora</h2>
+<!-- paragrafo de texto -->
+<p>informe o numero 1:</p>
+<!-- input é a parte que fica em tela que o usuario pode digitar (leia do portugol) -->
 <input id="num1" type="number">
-<p>Informe o número 2:</p>
+<p>informe o numero 2:</p>
 <input id="num2" type="number">
-
-<!-- Br pula linha -->
+<!-- br pula uma linha -->
 <br><br>
 
-<!-- Criar botão na tela  -->
-<button type = "button" onclick = "calcular('Somar')">Somar</button>
-<br><br>
-<button type = "button" onclick = "calcular('subtrair')">Diminuir</button>
-<br><br>
-<button type = "button" onclick = "calcular('Multiplicar')">Multiplicar</button>
-<br><br>
-<button type = "button" onclick = "calcular('Dividir')">Dividir</button>
+<!-- criar um botão em tela -->
+<button type="button" onclick="calcular('somar')">Somar</button>
+<button type="button" onclick="calcular('subtrair')">Subtrair</button>
+<button type="button" onclick="calcular('multiplicar')">Multiplicar</button>
+<button type="button" onclick="calcular('dividir')">Dividir</button>
 
 <h4>Resultado:</h4>
-<!-- Divisao que fazemos na tela que o usuario nao ve, apenas o programador -->
-<div id = "resultado"></div>
+<!-- a div é uma DIVisão que fazemos na tela -->
+ <hr>
+ Escolha um pokemon
+ <input id="pokemon" type="text">
+<button type="button" onclick="inserirPokemon()">Inserir</button>
+
+<div id="resultado"></div>
+<div id="pokemon-info"></div>
+
 
 <script>
-    function calcular(operacao){
-        //pegar o valor que o usuario digitou no input numero 1
-        var numero1 = parseFloat(document.getElementById('num1').value);
-        var numero2 = parseFloat(document.getElementById('num2').value);
 
-        switch(operacao){
-            case 'Somar':
+    function inserirPokemon(){
+
+       var nomePokemom = document.getElementById('pokemon').value
+        fetch('https://pokeapi.co/api/v2/pokemon/'+ nomePokemom)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                document.getElementById('pokemon-info').innerHTML = 'nome: '+ data.name
+                document.getElementById("pokemon-info").innerHTML += 
+                '<br><img src="'+data.sprites.front_default +'" width="150">';
+            })
+    }
+    
+    function inserirGato(){ 
+        // Interagindo com uma API
+        // o fetch vai buscar os dados da API no link que esta dentro dele
+        fetch('https://api.thecatapi.com/v1/images/search')
+        // diz que a reposta vai ser retornada em formato JSON
+        .then(res => res.json())
+        // Local onde podemos manipular a resposta da API
+        .then(data => {
+            console.log(data)
+            // pegando o ID resultado em TELA e adicionando um HTML
+            document.getElementById('resultado').innerHTML +=
+            '<img src="'+data[0].url+'" width="300">'
+
+        })
+    }
+
+    function calcular(operacao){
+       // pegar o valor que o usuario digitou no input numero 1
+       // parseFloat converte o valor de texto para numero com virgula
+       var numero1 = parseFloat(document.getElementById('num1').value);
+       var numero2 = parseFloat(document.getElementById('num2').value);
+
+    // escolha caso
+    // switch é a estrutura de escolha
+       switch(operacao){
+            // caso
+            case 'somar':
                 resultado = numero1 + numero2
+                // pare
                 break
             case 'subtrair':
                 resultado = numero1 - numero2
                 break
-            case 'Multiplicar':
+            case 'multiplicar':
                 resultado = numero1 * numero2
                 break
-            case 'Dividir':
-                //se e senao
-                if(numero2 = 0){
-                    resultado = 'Não e possivel dividir por zero!'
+            case 'dividir':
+                // se e senao
+                if (numero2 == 0){
+                    resultado = 'Não é possível dividir por zero!'
                 }else{
                     resultado = numero1 / numero2
                 }
-                break
+                break        
+       }
+         // mostrar o resultado na tela
+         document.getElementById('resultado').innerHTML = resultado
+            //chamada da  API
+        fetch('https://pokeapi.co/api/v2/pokemon/'+ resultado)
+            .then(res => res.json())
+            //quando dar certo cai aqui 
+            .then(data => {
+                console.log(data)
+                document.getElementById('pokemon-info').innerHTML = 'nome: '+ data.name
+                document.getElementById("pokemon-info").innerHTML += 
+                '<br><img src="'+data.sprites.front_default +'" width="150">';
+            })
+            //quando algo der errado cai aqui
+            .catch(error=>{            
+              inserirGato();
+            })
+
+            //quando finaizar cai aqui
+            .finally(()=>{
+                console.log('Processo finalizado');
+            })
     }
-    //mostrar resultado na tela 
-    document.getElementById('resultado').innerHTML = resultado;
-}
-</script>  
+
+</script>
