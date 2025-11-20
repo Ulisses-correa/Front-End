@@ -15,41 +15,55 @@
 <input id="num2" type="number">
 <!-- br pula uma linha -->
 <br><br>
-<button type="button" onclick="calcular('somar')">Somar</button>
-<button type="button" onclick="calcular('subtrair')">Subtrair</button>
-<button type="button" onclick="calcular('multiplicar')">Multiplicar</button>
-<button type="button" onclick="calcular('dividir')">Dividir</button>
-<button type="button" onclick="calcular('resto')">Resto</button>
-<button type="button" onclick="calcular('exp')">Exp</button>
+<button type="button" onclick="digitar('+')">Somar</button>
+<button type="button" onclick="digitar('-')">Subtrair</button>
+<button type="button" onclick="digitar('-')">Multiplicar</button>
+<button type="button" onclick="digitar('/')">Dividir</button>
+<button type="button" onclick="digitar('resto')">Resto</button>
+<button type="button" onclick="digitar('exp')">Exp</button>
 <br>
 <br>
 botoes de Calculadora
 <br>
 <br>
 
-<button type="button" onclick="calcular('7')"> 7 </button>
-<button type="button" onclick="calcular('8')"> 8 </button>
-<button type="button" onclick="calcular('9')"> 9 </button>
-<br>
-<button type="button" onclick="calcular('4')"> 4 </button>
-<button type="button" onclick="calcular('5')"> 5 </button>
-<button type="button" onclick="calcular('6')"> 6 </button>
-<br>
-<button type="button" onclick="calcular('1')"> 1 </button>
-<button type="button" onclick="calcular('2')"> 2 </button>
-<button type="button" onclick="calcular('3')"> 3 </button>
-<br>
-<button type="button" onclick="calcular('exp')">+/</button>
-<button type="button" onclick="calcular('0')"> 0 </button>
-<button type="button" onclick="calcular('.')"> . </button>
+<div class="display">
+ <p id="display">0 </p>
+</div>
 
+<br>
 
+<br>
+<button type="button" onclick="clearDisplay()"> CE </button >
+<button type="button" onclick="digitar('%')"> % </button>
+<button type="button" onclick="digitar('XV')"> XV </button>
+<button type="button" onclick="digitar('/')">ﾠ/ﾠ</button>
+<br>
+<button type="button" onclick="digitar('7')">ﾠ7ﾠ</button>
+<button type="button" onclick="digitar('8')">ﾠ8ﾠ</button>
+<button type="button" onclick="digitar('9')">ﾠ9ﾠ</button>
+<button type="button" onclick="digitar('*')">ﾠ*ﾠ</button>
+<br>
+<button type="button" onclick="digitar('4')">ﾠ4ﾠ</button>
+<button type="button" onclick="digitar('5')">ﾠ5ﾠ</button>
+<button type="button" onclick="digitar('6')">ﾠ6ﾠ</button>
+<button type="button" onclick="digitar('-')">ﾠ-ﾠ</button>
+<br>
+<button type="button" onclick="digitar('1')">ﾠ1ﾠ</button>
+<button type="button" onclick="digitar('2')">ﾠ2ﾠ</button>
+<button type="button" onclick="digitar('3')">ﾠ3ﾠ</button>
+<button type="button" onclick="digitar('+')">ﾠ+ﾠ</button>
+<br>
+<button type="button" onclick="digitar('+/-')"> +/-ﾠ</button>
+<button type="button" onclick="digitar('0')">ﾠ0ﾠ</button>
+<button type="button" onclick="digitar('.')">ﾠ.ﾠ</button>
+<button type="button" onclick="digitar('=')">ﾠ=ﾠ</button>
 
 
 <!-- BOTAO -->
 <h4>Resultado:</h4>
 <p id="resultado"></p>
 <br>
-<script src="scripit.js"></script>
+<script src="calculadora.js"></script>
 </body>
 </html>
