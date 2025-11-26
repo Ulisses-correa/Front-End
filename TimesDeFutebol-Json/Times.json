@@ -1,0 +1,87 @@
+{"Times" :[
+    {
+        "Nome": "Vasco da Gama",
+        "Cidade": "Rio de Janeiro",
+        "Estadio": "Maracanã",
+        "Fundacao": "1898",
+        "idolo": "Roberto Dinamite"
+    },
+    {
+        "Nome": "Flamengo",
+        "Cidade": "Rio de Janeiro",
+        "Estadio": "Maracanã",
+        "Fundacao": "1895",
+        "idolo": "Zico"
+    },
+    {
+        "Nome": "Palmeiras",
+        "Cidade": "São Paulo",
+        "Estadio": "Allianz Parque",
+        "Fundacao": "1914",
+        "idolo": "Marcos"
+    },
+    {
+        "Nome": "Grêmio",
+        "Cidade": "Porto Alegre",
+        "Estadio": "Arena do Grêmio",
+        "Fundacao": "1903",
+        "idolo": "Renato Gaúcho"
+    },
+    {
+        "Nome": "Corinthians",
+        "Cidade": "São Paulo",
+        "Estadio": "Neo Química Arena",
+        "Fundacao": "1910",
+        "idolo": "Sócrates"
+    },
+    {
+        "Nome": "Vasco da Gama",
+        "Cidade": "Rio de Janeiro",
+        "Estadio": "São Januário",
+        "Fundacao": "1898",
+        "idolo": "Roberto Dinamite"
+    }, 
+    {
+        "Nome": "Santos",
+        "Cidade": "Santos",
+        "Estadio": "Vila Belmiro",
+        "Fundacao": "1912",
+        "idolo": "Pelé"
+    }, 
+    {
+        "Nome": "Atlético Mineiro",
+        "Cidade": "Belo Horizonte",
+        "Estadio": "Mineirão",
+        "Fundacao": "1908",
+        "idolo": "Reinaldo"
+    },
+    {
+        "Nome": "São Paulo FC",
+        "Cidade": "São Paulo",
+        "Estadio": "Morumbi",
+        "Fundacao": "1930",
+        "idolo": "Rogério Ceni"
+    },
+     {
+        "Nome": "Internacional",
+        "Cidade": "Porto Alegre",
+        "Estadio": "Beira-Rio",
+        "Fundacao": "1909",
+        "idolo": "Falcão"
+     }, 
+     {
+        "Nome": "Botafogo",
+        "Cidade": "Rio de Janeiro",
+        "Estadio": "Nilton Santos",
+        "Fundacao": "1904",
+        "idolo": "Garrincha"
+     }
+    
+]
+
+
+
+
+
+
+}

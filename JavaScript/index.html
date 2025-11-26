@@ -1,69 +1,164 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculadora</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #3a3a3a, #1a1a1a);
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .calculadora-container {
+            background: #222;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.4);
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .display {
+            background: #111;
+            color: #0f0;
+            font-size: 2.5rem;
+            text-align: right;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #444;
+        }
+
+        .botoes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            padding: 15px;
+            font-size: 1.2rem;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #555;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .operador {
+            background: #ff9500;
+            color: black;
+        }
+
+        .operador:hover {
+            background: #ffb84d;
+        }
+
+        .igual {
+            background: #4caf50;
+            color: white;
+        }
+
+        .igual:hover {
+            background: #6bd66f;
+        }
+
+        .zero {
+            grid-column: span 2;
+        }
+    </style>
 </head>
+
 <body>
-    <h2>Calculadora</h2>
-<!-- paragrafo de texto -->
-<p>informe o numero 1:</p>
-<!-- input é a parte que fica em tela que o usuario pode digitar (leia do portugol) -->
-<input id="num1" type="number">
-<p>informe o numero 2:</p>
-<input id="num2" type="number">
-<!-- br pula uma linha -->
-<br><br>
-<button type="button" onclick="digitar('+')">Somar</button>
-<button type="button" onclick="digitar('-')">Subtrair</button>
-<button type="button" onclick="digitar('-')">Multiplicar</button>
-<button type="button" onclick="digitar('/')">Dividir</button>
-<button type="button" onclick="digitar('resto')">Resto</button>
-<button type="button" onclick="digitar('exp')">Exp</button>
-<br>
-<br>
-botoes de Calculadora
-<br>
-<br>
 
-<div class="display">
- <p id="display">0 </p>
-</div>
+    <div class="calculadora-container">
+        <h2>Calculadora</h2>
 
-<br>
+        <div class="display" id="display">0</div>
 
-<br>
-<button type="button" onclick="clearDisplay()"> CE </button >
-<button type="button" onclick="digitar('%')"> % </button>
-<button type="button" onclick="digitar('XV')"> XV </button>
-<button type="button" onclick="digitar('/')">ﾠ/ﾠ</button>
-<br>
-<button type="button" onclick="digitar('7')">ﾠ7ﾠ</button>
-<button type="button" onclick="digitar('8')">ﾠ8ﾠ</button>
-<button type="button" onclick="digitar('9')">ﾠ9ﾠ</button>
-<button type="button" onclick="digitar('*')">ﾠ*ﾠ</button>
-<br>
-<button type="button" onclick="digitar('4')">ﾠ4ﾠ</button>
-<button type="button" onclick="digitar('5')">ﾠ5ﾠ</button>
-<button type="button" onclick="digitar('6')">ﾠ6ﾠ</button>
-<button type="button" onclick="digitar('-')">ﾠ-ﾠ</button>
-<br>
-<button type="button" onclick="digitar('1')">ﾠ1ﾠ</button>
-<button type="button" onclick="digitar('2')">ﾠ2ﾠ</button>
-<button type="button" onclick="digitar('3')">ﾠ3ﾠ</button>
-<button type="button" onclick="digitar('+')">ﾠ+ﾠ</button>
-<br>
-<button type="button" onclick="digitar('+/-')"> +/-ﾠ</button>
-<button type="button" onclick="digitar('0')">ﾠ0ﾠ</button>
-<button type="button" onclick="digitar('.')">ﾠ.ﾠ</button>
-<button type="button" onclick="digitar('=')">ﾠ=ﾠ</button>
+        <div class="botoes">
+            <button onclick="clearDisplay()">CE</button>
+            <button onclick="digitar('%')">%</button>
+            <button onclick="digitar('+/-')">+/-</button>
+            <button class="operador" onclick="digitar('/')">/</button>
 
+            <button onclick="digitar('7')">7</button>
+            <button onclick="digitar('8')">8</button>
+            <button onclick="digitar('9')">9</button>
+            <button class="operador" onclick="digitar('*')">*</button>
 
-<!-- BOTAO -->
-<h4>Resultado:</h4>
-<p id="resultado"></p>
-<br>
-<script src="calculadora.js"></script>
+            <button onclick="digitar('4')">4</button>
+            <button onclick="digitar('5')">5</button>
+            <button onclick="digitar('6')">6</button>
+            <button class="operador" onclick="digitar('-')">-</button>
+
+            <button onclick="digitar('1')">1</button>
+            <button onclick="digitar('2')">2</button>
+            <button onclick="digitar('3')">3</button>
+            <button class="operador" onclick="digitar('+')">+</button>
+
+            <button onclick="digitar('0')" class="zero">0</button>
+            <button onclick="digitar('.')">.</button>
+            <button class="igual" onclick="digitar('=')">=</button>
+        </div>
+    </div>
+
+    <script>
+        let display = document.getElementById("display");
+        let expressao = "";
+
+        function digitar(valor) {
+
+            if (valor === "=") {
+                try {
+                    expressao = expressao.replace("%", "/100");
+                    display.textContent = eval(expressao);
+                    expressao = display.textContent;
+                } catch {
+                    display.textContent = "Erro";
+                    expressao = "";
+                }
+                return;
+            }
+
+            if (valor === "+/-") {
+                if (expressao) {
+                    expressao = String(eval(expressao) * -1);
+                    display.textContent = expressao;
+                }
+                return;
+            }
+
+            expressao += valor;
+            display.textContent = expressao;
+        }
+
+        function clearDisplay() {
+            expressao = "";
+            display.textContent = "0";
+        }
+    </script>
+
 </body>
 </html>
