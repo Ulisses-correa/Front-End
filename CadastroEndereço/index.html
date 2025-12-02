@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buscador de CEP</title>
 </head>
+
 <body>
- <form>
+    <form>
         <h2>Cadastro de Endereço</h2>
         <label for="cep">Digite o CEP:</label>
         <input type="text" id="cep" name="cep" placeholder="Ex: 12345-678"><br>
@@ -18,30 +20,48 @@
         <input type="text" id="cidade" name="cidade"> <br>
         <label for="estado">Estado:</label>
         <input type="text" id="estado" name="estado">
-</form>
-<script>
-    // pega o campo cep de tela e adiciona em uma variavel
-    var campoCep = document.getElementById('cep');
-    // quando o campo perder o foco ele roda uma função
-     campoCep.addEventListener('blur', function(){
-        
-        // value vai estar pegando o valor digitado no campo
-        var valorCep = campoCep.value
-        // chamada da API via fetch
-        fetch('https://viacep.com.br/ws/'+valorCep+'/json/')
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            document.getElementById('logradouro').value = data.logradouro;
-            document.getElementById('bairro').value = data.bairro; 
-            document.getElementById('cidade').value = data.localidade;
-            document.getElementById('estado').value = data.uf;
-            
-             campoCep.style.border = '2px solid green';
-            
-        })
-        .catch(error =>{
-                campoCep.style.border = '2px solid red';    
-            });
+    </form>
+    <div id="pokemon-info" style="margin-top:20px; font-size:20px;"></div>
+    <script>
+        // pega o campo cep de tela e adiciona em uma variavel
+        var campoCep = document.getElementById('cep');
+        // quando o campo perder o foco ele roda uma função
+        campoCep.addEventListener('blur', function () {
+
+            // value vai estar pegando o valor digitado no campo
+            var valorCep = campoCep.value
+            // chamada da API via fetch
+            fetch('https://viacep.com.br/ws/' + valorCep + '/json/')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    document.getElementById('logradouro').value = data.logradouro;
+                    document.getElementById('bairro').value = data.bairro;
+                    document.getElementById('cidade').value = data.localidade;
+                    document.getElementById('estado').value = data.uf;
+
+                    campoCep.style.border = '2px solid green';
+
+
+
+
+                    var campCep = document.getElementById('cep').value
+
+                    fetch('https://pokeapi.co/api/v2/pokemon/' + campCep.replace("-", "").substr(5, 3))
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                            console.log(campCep);
+
+                            document.getElementById('pokemon-info').innerHTML = 'Nome: ' + data.name
+                            document.getElementById("pokemon-info").innerHTML +=
+                                '<br><img src="' + data.sprites.front_default + '" width="150">';
+                        })
+
+
+                })
+                .catch(error => {
+                    campoCep.style.border = '2px solid red';
+                });
         });
-</script>
+    </script>

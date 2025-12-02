@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de CEP + Pokémon</title>
+</head>
+<body>
+
+<form>
+    <h2>Cadastro de Endereço</h2>
+
+    <label for="cep">Digite o CEP:</label>
+    <input type="text" id="cep" name="cep" placeholder="Ex: 12345-678"><br>
+
+    <label for="logradouro">Logradouro:</label>
+    <input type="text" id="logradouro" name="logradouro"> <br>
+
+    <label for="bairro">Bairro:</label>
+    <input type="text" id="bairro" name="bairro"><br>
+
+    <label for="cidade">Cidade:</label>
+    <input type="text" id="cidade" name="cidade"> <br>
+
+    <label for="estado">Estado:</label>
+    <input type="text" id="estado" name="estado">
+</form>
+
+<!-- ÁREA PARA MOSTRAR O POKÉMON -->
+<div id="pokemon-info" style="margin-top:20px; font-size:20px;"></div>
+
+<script>
+
+var campoCep = document.getElementById('cep');
+
+// quando o campo perder o foco
+campoCep.addEventListener('blur', function(){
+
+    var valorCep = campoCep.value;
+
+    // Consulta CEP
+    fetch('https://viacep.com.br/ws/'+valorCep+'/json/')
+    .then(response => response.json())
+    .then(data => {
+
+        document.getElementById('logradouro').value = data.logradouro;
+        document.getElementById('bairro').value = data.bairro; 
+        document.getElementById('cidade').value = data.localidade;
+        document.getElementById('estado').value = data.uf;
+
+        campoCep.style.border = '2px solid green';
+
+        // CHAMA A FUNÇÃO DO POKÉMON
+        inserirPokemon();
+
+    })
+    .catch(error =>{
+        campoCep.style.border = '2px solid red';    
+    });
+});
+
+
+// FUNÇÃO DO POKÉMON
+function inserirPokemon(){
+
+    var cep = document.getElementById('cep').value;
+
+    // PEGA SOMENTE OS 3 ÚLTIMOS DÍGITOS
+    var ultimos3 = cep.replace("-", "").slice(-3);
+
+    // Se não for número válido, não busca
+    if(isNaN(ultimos3) || ultimos3.trim() === ""){
+        document.getElementById('pokemon-info').innerHTML = "";
+        return;
+    }
+
+    // Busca o Pokémon com base nos 3 últimos números
+    fetch('https://pokeapi.co/api/v2/pokemon/' + ultimos3)
+        .then(res => res.json())
+        .then(data => {
+
+            document.getElementById('pokemon-info').innerHTML = 
+                'Pokémon: <strong>'+ data.name +'</strong>' +
+                '<br><img src="'+ data.sprites.front_default +'" width="150">';
+        })
+        .catch(() => {
+            document.getElementById('pokemon-info').innerHTML = 
+                "<strong>Pokémon não encontrado.</strong>";
+        });
+}
+
+</script>
+
+</body>
+</html>
