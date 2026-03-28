@@ -1,4 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
 body{
-    background-color: rgb(255, 255, 255);
+    background-color: #0D1B2A; /*Cor do fundo geral*/
 }
+
+
+.caixa {
+  border: 2px solid #4A90E2;        /* borda azul suave */
+  background-color: #474444;        /* fundo azul claro */
+  color: #e6e6e6;                   /* texto azul escuro */
+  padding: 6px 14px;                /* espaço interno maior */
+  border-radius: 12px;              /* cantos arredondados bem suaves */
+  font-weight: 600;                 /* texto mais firme */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  /* fonte limpa e moderna */
+  box-shadow: 0 2px 6px rgba(74, 144, 226, 0.3); /* sombra leve */
+  transition: background-color 0.3s ease, color 0.3s ease;  /* transição suave */
+  cursor: pointer;                 /* cursor de link */
+  display: inline-block;
+  user-select: none;               /* evita seleção acidental */
+}
+
+.caixa:hover {
+  background-color: #4A90E2;       /* fundo azul mais forte ao passar mouse */
+  color: #fff;                     /* texto branco ao passar mouse */
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.5); /* sombra mais intensa */
+}
+.feirao {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 2.8rem;               /* tamanho grande e chamativo */
+  font-weight: 800;                /* negrito pesado */
+  color: #326bb9;                 /* azul escuro harmonioso */
+  letter-spacing: 0.12em;          /* espaçamento entre letras */
+  text-transform: uppercase;       /* todas maiúsculas */
+  text-shadow: 2px 2px 6px rgba(26, 62, 114, 0.3); /* sombra suave azulada */
+  margin-bottom: 1rem;
+  user-select: none;
+  transition: color 0.3s ease;
+  cursor: default;
+}
+
+
+.feirao:hover {
+  color: #16325a;                 /* azul mais escuro no hover */
+  text-shadow: 3px 3px 8px rgba(22, 50, 90, 0.5);
+}
+.listafeirao{
+  color: #326bb9;
+}
+.tituloaba{
+  color: #09397e;
+}
+.meufundo{
+  color: #ac2c2c;
+}
+
