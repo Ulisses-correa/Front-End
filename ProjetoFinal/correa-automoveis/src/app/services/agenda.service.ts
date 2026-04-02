@@ -25,8 +25,13 @@ export class AgendaService {
     return this.http.post<Evento>(this.URL_EVENTOS, evento);
   }
 
-  // Excluir compromisso
+  // Excluir compromisso com tipo compatível com Evento.id (string)
   excluirEvento(id: string): Observable<void> {
     return this.http.delete<void>(`${this.URL_EVENTOS}/${id}`);
   }
+
+  deletarEvento(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.URL_EVENTOS}/${id}`);
+  }
 }
+

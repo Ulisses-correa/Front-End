@@ -10,4 +10,6 @@ export interface Evento {
   local: string;
   categoriaId: string;
   descricao: string;
+  fotoUrl?: string;
 }
+
